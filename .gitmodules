@@ -1,0 +1,15 @@
+[submodule "helpers"]
+	path = helpers
+	url = git@github.com:wzll/helpers.git
+[submodule "vendors"]
+	path = vendors
+	url = git@github.com:wzll/vendors.git
+[submodule "modules/profiler"]
+	path = modules/profiler
+	url = git@github.com:wzll/profiler.git
+[submodule "modules/cache"]
+	path = modules/cache
+	url = git@github.com:wzll/cache.git
+[submodule "modules/sdk"]
+	path = modules/sdk
+	url = git@github.com:wzll/sdk.git
