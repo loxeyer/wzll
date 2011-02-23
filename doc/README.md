@@ -1,18 +1,18 @@
-# 目录概述 #
+# 目录概述
 
 	|- helpers/ 
 	|- modules/ 
 	|- vendors/ 
 	|- SDK (php file)
 
-## helpers ## 
+## helpers 
 
 这里放静态类,如Arr / Text等等,可以拿来直接用,不需要进行任何配置
 
 	Arr::overwrite($arr1, $arr2); 
 	Text::flat('hello world');
 
-## modules ##
+## modules
 
 所有的模块都放在这里,如http / cache / log等等。
 
@@ -28,12 +28,12 @@
 		|- config/ 
 			|- cache.php
 
-### 类文件命名 ###
+### 类文件命名
 
 * 如果是入口文件(如cache/cache.php),直接命名为Class Cache
 * 默认按照"文件夹_文件名"命名,如adapter.php命名为 Cache_Adapter
 
-### 配置文件 ###
+### 配置文件
 
 * 如果有配置文件的话,路径均为 config/modulename.php
 * 对配置项的注释都写在行尾
@@ -52,27 +52,27 @@
 		),
 	);
 
-### 适配器模式 ###
+### 适配器模式
 
 如果可以有多种媒介去完成同一件事情,如Cache可以有多种存储方式,Log 可以有多种记录方式,抽象类统一命名为adapter.php,实现类统一放在 adapter文件夹下。
 
-### 异常处理 ###
+### 异常处理
 
 如果一个模块要抛出异常,必须继承SDK_Exception类,如
 
 	Class Cache_Exception extends SDK_Exception {}
 
-### 入口类 ###
+### 入口类
 
 入口类(文件名与模块名相同的那个php文件)必须继承SDK_Base
 
 	Class Cache extends SDK_Base {}
 
-## vendors ##
+## vendors
 
 这个文件夹里放的都是第三方类,如firephp / doctrine-dbal / doctrine-orm 等 等,部分模块可能依赖这些第三方类库。
 
-# 系统模块(SDK) #
+# 系统模块(SDK)
 
 系统模块一共包含三个文件
 
@@ -80,11 +80,11 @@
 	base.php
 	exceptin.php
 
-## sdk.php ##
+## sdk.php
 
 SDK类主要包含以下几个方法
 
-### factory ###
+### factory
 
 全局工厂方法,如
 
@@ -95,22 +95,22 @@ SDK类主要包含以下几个方法
 	// 如果不传的话,将会读取指定的config文件 
 	$cache = SDK::factory('Cache', 'Cache_Adapter_File', $config);
 
-### instance ###
+### instance
 
 完全同上,只不过如果该类已经存在的话,会返回之前的类
 
-### setConfigDir ###
+### setConfigDir
 
 设置config文件的文件夹路径,如果不设置的话,则读取模块默认的config文件
 
 	// 以后无论是SDK::instance或SDK::factory都会从该文件夹读取config
 	SDK::setConfigDir('/path/to/config');
 
-### initModules ###
+### initModules
 
 初始化模块,如果模块存在init.php文件,则在SDK::init时会载入该init.php文件
 
-### getConfig ###
+### getConfig
 
 获取config,如
 
@@ -118,16 +118,16 @@ SDK类主要包含以下几个方法
 	config SDK::getConfig('Cache'); 
 	SDK::getConfig('Cache_Adapter_File');
 
-### autoload ###
+### autoload
 
 设置SDK的自动载入
 
 
-## base.php ##
+## base.php
 
 所有的入口类都要继承SDK_Base类,该类主要有以下几个作用
 
-### getter / setter ###
+### getter / setter
 
 	class Cache 
 	{
@@ -146,7 +146,7 @@ SDK类主要包含以下几个方法
 	$cache->adapter = 'Cache_Adapter_Memcache';
 	echo $cache->adapter;
 
-### config ### 
+### config 
 
 继承了SDK_Base后,就有了统一的config获取方法
 
@@ -173,7 +173,7 @@ SDK类主要包含以下几个方法
 		}
 	}
 
-### extend ### 
+### extend 
 
 	class My_Cache 
 	{ 
@@ -189,9 +189,9 @@ SDK类主要包含以下几个方法
 	// $cache now has 'foo' method 
 	$cache->foo('hello world');
 
-# 其他要点 #
+# 其他要点
 
-## 版本号 ##
+## 版本号
 
 每个模块/助手类都有版本号,版本号的规则如下
 
@@ -201,7 +201,7 @@ SDK类主要包含以下几个方法
 	如果类的接口发生改变,则将类重新命名为ClassX,也就是新建一个模块。 
 	也就是说,一个模块一旦形成,就只能新增方法或调整内部实现。
 
-## 注释 ##
+## 注释
 
 * 使用英文注释 
 * 类和方法的注释可以包含demo 
@@ -211,11 +211,11 @@ SDK类主要包含以下几个方法
 * @param type $param intro (如 @param string $className class name) 
 * 如果@param类型不定,则为"mixed"
 
-## PHP内部数据类型 ##
+## PHP内部数据类型
 
 如 true / false / null 统一都小写
 
-## 异常 ##
+## 异常
 
 抛出异常时,如果有变量,则用"{}"括起来,作为第二个参数的key
 
