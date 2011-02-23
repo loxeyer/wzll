@@ -215,6 +215,10 @@ SDK类主要包含以下几个方法
 
 如 true / false / null 统一都小写
 
+## Github
+
+在Github上，每个模块都有两条分支(master/develop)，master保存模块的各个稳定版，develop分支作为日常开发分支，当develop经测试稳定后，merge到master作为新版本发布
+
 ## 异常
 
 抛出异常时,如果有变量,则用"{}"括起来,作为第二个参数的key
