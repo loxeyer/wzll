@@ -41,7 +41,6 @@
 * 配置项的key为类名 
 * 配置项的key跟变量书写规范一致:驼峰法
 
-
 	return array(
 		'Cache' => array(
 			'adapter' => 'Cache_Adapter_Memcache'
@@ -52,7 +51,6 @@
 			'compress' => true,
 		),
 	);
-
 
 ### 适配器模式
 
