@@ -216,6 +216,17 @@ SDK类主要包含以下几个方法
 
 如 true / false / null 统一都小写
 
+## 命名
+
+### 常量
+用define定义的全局常量和在类内部用const定义的类常量，全部用大写字母，多个单词之间用下划线"_"分隔。
+
+### 方法和属性
+类的方法和属性采用首个单词小写的驼峰式命名法。方法名首字母建议使用动词，如getXXX、sendXXX。对于protected和private这种外部不可见的，要加上下划线前缀"_"，如：
+
+	protected $_lastItem;
+	private function $_buildObject($config)
+
 ## Github
 
 在Github上，每个模块都有两条分支(master/develop)，master保存模块的各个稳定版，develop分支作为日常开发分支，当develop经测试稳定后，merge到master作为新版本发布
